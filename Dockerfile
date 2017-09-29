@@ -3,7 +3,7 @@ FROM rails:4.2.5
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES 1
 
-WORKDIR /rails/cedar
+WORKDIR /rails/poplin_inspector
 
 ADD Gemfile ./Gemfile
 ADD Gemfile.lock ./Gemfile.lock
