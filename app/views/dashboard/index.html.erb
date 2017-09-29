@@ -1,0 +1,34 @@
+<!-- TODO: Set up a tab UI for RabbitMQ, FHIR, anything else we want to test -->
+
+<% rabbitmq_server = ENV["RABBITMQ_URL"] %>
+<% if rabbitmq_server == 'localhost' %>
+  <div class="alert alert-warning" role="alert"><code>RABBITMQ_URL</code> has been set to <code><%= rabbitmq_server %></code>. If this is incorrect, change it and restart.</div>
+<% else %>
+  <div class="alert alert-info" role="alert">Using <code><%= rabbitmq_server %></code> as the RabbitMQ server. If you wish to modify this, change the <code>RABBITMQ_URL</code> environment variable and restart the server.</div>
+<% end %>
+
+<h1>Publish Message</h1>
+<%= form_tag('dashboard/publish', remote: true) do %>
+  <div class="form-group">
+    <label for="pub_message">Message Text</label>
+    <!-- <small id="pub_message_tooltip" class="form-text text-muted">Send a quick message to all subscribers.</small> -->
+    <%= text_field 'pub_message', nil, class: "form-control", placeholder: 'Publish something...' %>
+  </div>
+  <div class="form-group">
+    <label for="pub_label">Routing Key</label>
+    <!-- <small id="pub_label_tooltip" class="form-text text-muted">Anyone subscribed to this label will receive the message.</small> -->
+    <%= text_field 'pub_label', nil, class: "form-control", placeholder: 'Enter a routing key' %>
+  </div>
+  <p><button id='publish' type='submit' class="btn btn-primary">Publish</button></p>
+<% end %>
+<!-- TODO: display success/failure messages after sending -->
+
+<h1>Manage Subscriptions</h1>
+TODO
+<!-- TODO: Add a UI (similar to tags on measures and validations in Cedar) -->
+<!-- TODO: Link the UI to RabbitMQ...somehow -->
+
+<h1>Get Messages</h1>
+TODO
+<!-- TODO: Add a table UI with the expectation that it will be continuously updated -->
+<!-- TODO: Link the UI to RabbitMQ...somehow -->

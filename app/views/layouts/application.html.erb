@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Poplin Inspector</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'poplin_icon_small.png', type: 'image/png' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,700" rel="stylesheet">
+</head>
+<body class='poplin'>
+
+  <nav class='navbar navbar-inverse navbar-fixed-top' style='overflow-y: visible;' role='navigation'>
+    <div class='container'>
+      <div class='navbar-header'>
+        <a class='navbar-brand' href='/'>
+          <img alt='Brand' class='img-responsive center-block header-logo' src='/assets/poplin_icon_small.png' /> Poplin Inspector
+          <% inspector_name = ENV["POPLIN_INSPECTOR_NAME"] %>
+          <% if !inspector_name.blank? %>
+            <span class="badge badge-info" title="<%= inspector_name %> is the name of this instance of the Poplin Inspector"><%= inspector_name %></span>
+          <% end %>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class='container p-3'>
+    <% if inspector_name.blank? %>
+      <div class="alert alert-danger" role="alert">Warning: <code>POPLIN_INSPECTOR_NAME</code> not set. Set this environment variable to distinguish this instance of Poplin Inspector from other instances.</div>
+    <% end %>
+    <%= yield %>
+  </div>
+
+</body>
+</html>
