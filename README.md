@@ -8,7 +8,10 @@ Ensure that the following environment variables are set when the machine is crea
 - Set `SECRET_KEY_BASE`, `SECRET_KEY`, `SECRET_TOKEN`, and `RAILS_SERVE_STATIC_FILES` to arbitrary values (foo/bar/baz if you like) to set up the environment and actually serve pipeline assets.  TODO: figure out better solutions for these items.
 
 # TODO
-- Implement the [RabbitMQ tutorial scripts](https://www.rabbitmq.com/getstarted.html) in a nice front end to show Pub/Sub and Request/Response message patterns
+- RabbitMQ tutorial scripts](https://www.rabbitmq.com/getstarted.html) in a nice front end to show the following message patterns:
+  - ~~Pub/Sub Fanout - done~~
+  - Pub/Sub by Routing Key
+  - Request/Response
 - Demonstrate a simple communication with the [Synthea FHIR server](https://github.com/synthetichealth)
 - Demonstrate a simple communication with the [Provider Screening Module](https://github.com/OpenTechStrategies/psm)
 - Determine whether we can integrate portions of [Crucible FHIR server Testing](https://github.com/fhir-crucible/) into Poplin
@@ -22,6 +25,7 @@ Ensure that the following environment variables are set when the machine is crea
 - [Blog post on AJAX with `remote: true`](https://medium.com/@AdamKing0126/ajax-and-rails-demystifying-remote-true-fe51ba2ce819)
 - RabbitMQ Exchanges, Queues, and Bindings: [Part 1](https://www.compose.com/articles/configuring-rabbitmq-exchanges-queues-and-bindings-part-1/) and [Part 2](https://www.compose.com/articles/configuring-rabbitmq-exchanges-queues-and-bindings-part-2/)
 - [Bootstrap Documentation](http://getbootstrap.com/docs/4.0/getting-started/introduction/)
+- [RabbitMQ – Best Practices For Designing Exchanges, Queues And Bindings](https://derickbailey.com/2015/09/02/rabbitmq-best-practices-for-designing-exchanges-queues-and-bindings/)
 
 # README TODO
 * Ruby version

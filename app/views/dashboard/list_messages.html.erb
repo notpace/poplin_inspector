@@ -1,0 +1,20 @@
+<% if @messages.count > 0 %>
+<table class='table' id='messages_table'>
+  <thead>
+    <tr>
+      <th>Message
+      <th>Exchange
+      <th>Queue
+  </thead>
+  <tbody>
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%= message.text %>
+      <td><%= message.exchange %>
+      <td><%= message.queue %>
+  <% end %>
+  </tbody>
+</table>
+<% else %>
+<div class='alert alert-warning' id='messages_table'>No messages in the database.</div>
+<% end %>

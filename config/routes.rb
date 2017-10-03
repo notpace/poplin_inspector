@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   post 'dashboard/publish', to: 'dashboard#publish'
 
+  get 'dashboard/list_messages', to: 'dashboard#list_messages'
+  delete 'dashboard/delete_messages', to: 'dashboard#delete_messages'
+
   root 'dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
