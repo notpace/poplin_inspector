@@ -23,7 +23,7 @@ Ensure that the following environment variables are set when the machine is crea
 - [RabbitMQ as a Message Queue](http://blog.sundaycoding.com/blog/2015/03/22/using-message-queue-in-rails/)
 - [Working with AJAX in Ruby on Rails](http://guides.rubyonrails.org/working_with_javascript_in_rails.html)
 - [Blog post on AJAX with `remote: true`](https://medium.com/@AdamKing0126/ajax-and-rails-demystifying-remote-true-fe51ba2ce819)
-- RabbitMQ Exchanges, Queues, and Bindings: [Part 1](https://www.compose.com/articles/configuring-rabbitmq-exchanges-queues-and-bindings-part-1/) and [Part 2](https://www.compose.com/articles/configuring-rabbitmq-exchanges-queues-and-bindings-part-2/)
+- [RabbitMQ Exchanges, Queues, and Bindings: [Part 1](https://www.compose.com/articles/configuring-rabbitmq-exchanges-queues-and-bindings-part-1/) and [Part 2](https://www.compose.com/articles/configuring-rabbitmq-exchanges-queues-and-bindings-part-2/)
 - [Bootstrap Documentation](http://getbootstrap.com/docs/4.0/getting-started/introduction/)
 - [RabbitMQ – Best Practices For Designing Exchanges, Queues And Bindings](https://derickbailey.com/2015/09/02/rabbitmq-best-practices-for-designing-exchanges-queues-and-bindings/)
 
