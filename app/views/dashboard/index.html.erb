@@ -7,34 +7,51 @@
   <div class="alert alert-info" role="alert">Using <code><%= rabbitmq_server %></code> as the RabbitMQ server. If you wish to modify this, change the <code>RABBITMQ_URL</code> environment variable and restart the server.</div>
 <% end %>
 
-<h1>Publish Message</h1>
-<%= form_tag('dashboard/publish', remote: true) do %>
-  <div class="form-group">
-    <label for="pub_message">Message Text</label>
-    <!-- <small id="pub_message_tooltip" class="form-text text-muted">Send a quick message to all subscribers.</small> -->
-    <%= text_field 'pub_message', nil, class: "form-control", placeholder: 'Publish something...' %>
-  </div>
-  <div class="form-group">
-    <label for="pub_exchange">Exchange</label>
-    <!-- <small id="pub_exchange_tooltip" class="form-text text-muted">This exchange is parsed by RabbitMQ and used to route the message to the approproate parties.  In this fanout exchange, all parties connected to the queue bound to this exchange will receive the message, regardless of the routing key.</small> -->
-    <%= text_field 'pub_exchange', nil, class: "form-control", placeholder: 'Enter an exchange' %>
-  </div>
-  <div class="form-group">
-    <label for="pub_queue">Queue</label>
-    <!-- <small id="pub_queue_tooltip" class="form-text text-muted">This is the queue that the exchange will be bound to as part of the fanout exchange.</small> -->
-    <%= text_field 'pub_queue', nil, class: "form-control", placeholder: 'Enter a queue' %>
-  </div>
-  <p><button id='publish' type='submit' class="btn btn-primary">Publish</button></p>
-<% end %>
-<!-- TODO: display success/failure messages after sending -->
-<br>
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-6 col-md-12'>
+      <h1>Publish Message</h1>
+      <%= form_tag('dashboard/publish', remote: true) do %>
+        <div class="form-group">
+          <label for="pub_message">Message Text</label>
+          <!-- <small id="pub_message_tooltip" class="form-text text-muted">Send a quick message to all subscribers.</small> -->
+          <%= text_field 'pub_message', nil, class: "form-control", placeholder: 'Publish something...' %>
+        </div>
+        <div class="form-group">
+          <label for="pub_exchange">Exchange</label>
+          <!-- <small id="pub_exchange_tooltip" class="form-text text-muted">This exchange is parsed by RabbitMQ and used to route the message to the approproate parties.  In this fanout exchange, all parties connected to the queue bound to this exchange will receive the message, regardless of the routing key.</small> -->
+          <%= text_field 'pub_exchange', nil, class: "form-control", placeholder: 'Enter an exchange' %>
+        </div>
+        <div class="form-group">
+          <label for="pub_queue">Queue</label>
+          <!-- <small id="pub_queue_tooltip" class="form-text text-muted">This is the queue that the exchange will be bound to as part of the fanout exchange.</small> -->
+          <%= text_field 'pub_queue', nil, class: "form-control", placeholder: 'Enter a queue' %>
+        </div>
+        <p><button id='publish' type='submit' class="btn btn-primary">Publish</button></p>
+      <% end %>
+      <!-- TODO: display success/failure messages after sending -->
+    </div>
+    <div class='col-lg-6 col-md-12'>
+      <h1>Manage Subscriptions</h1>
+      <!-- This table loads as empty but is populated using the list_messages.html.erb partial -->
+      <table class='table' id='subscriptions_table'></table>
 
-<h1>Received Messages</h1>
-<div class='alert alert-info'>This table is bound to the <code>messages</code> queue.  No other messages will be displayed.</div>
-<!-- This table loads as empty but is populated using the list_messages.html.erb partial -->
-<table class='table' id='messages_table'></table>
-
-<p><button id='delete' class="btn btn-warning">Delete All Messages</button></p>
-
-<!-- TODO: Add a UI option to control subscriptions -->
-<!-- TODO: Link the UI to RabbitMQ...somehow -->
+      <%= form_tag('dashboard/create_sub_to_queue', remote: true) do %>
+        <div class="form-group">
+          <label for="queue_to_sub">Subscribe to Queue: </label>
+          <!-- <small id="pub_message_tooltip" class="form-text text-muted">Subscribe to a message queue to receive messages.</small> -->
+          <%= text_field 'queue_to_sub', nil, class: "form-control", placeholder: 'Enter a queue to subscribe to...' %>
+        </div>
+        <p><button id='create_subscription' type='submit' class="btn btn-primary">Create New Subscription</button></p>
+      <% end %>
+      <p><button id='delete_subscriptions' class="btn btn-warning">Delete All Subscriptions</button></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      <h1>Received Messages</h1>
+      <table class='table' id='messages_table'></table>
+      <p><button id='delete_messages' class="btn btn-warning">Delete All Messages</button></p>
+    </div>
+  </div>
+</div>

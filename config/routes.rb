@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  resources :subscriptions
   get 'dashboard/index'
 
   post 'dashboard/publish', to: 'dashboard#publish'
+  post 'dashboard/create_sub_to_queue', to: 'dashboard#create_sub_to_queue'
 
   get 'dashboard/list_messages', to: 'dashboard#list_messages'
   delete 'dashboard/delete_messages', to: 'dashboard#delete_messages'
+  get 'dashboard/list_subscriptions', to: 'dashboard#list_subscriptions'
+  delete 'dashboard/delete_subscriptions', to: 'dashboard#delete_subscriptions'
+  # delete 'dashboard/delete_subscription', to: 'dashboard#delete_subscription'
 
   root 'dashboard#index'
 
