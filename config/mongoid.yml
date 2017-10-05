@@ -135,3 +135,14 @@ test:
         read:
           mode: :primary
         max_pool_size: 1
+
+production:
+  clients:
+    default:
+      database: poplin_inspector_production
+      hosts:
+        - <%= ENV['MONGOHQ_URL'] %>
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
