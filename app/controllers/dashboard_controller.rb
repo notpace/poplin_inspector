@@ -1,6 +1,14 @@
 # The poplin inspector dashboard allows end users to probe messaging standards
 class DashboardController < ApplicationController
   require 'bunny'
+
+  before_action :set_rabbitmq_env
+
+  # Ensure that the RABBITMQ_URL variable starts with 'amqp://'
+  def set_rabbitmq_env
+    @rabbitmq_server = (ENV['RABBITMQ_URL'][0, 6] == 'amqp://' ? ENV['RABBITMQ_URL'] : 'amqp://' + ENV['RABBITMQ_URL'])
+  end
+
   def index; end
 
   # TODO: DRY up this code:
@@ -9,7 +17,7 @@ class DashboardController < ApplicationController
 
   def publish
     # TODO: Verify connection and recover from failure with a message to the user
-    conn = Bunny.new('amqp://' + ENV['RABBITMQ_URL']) # Will default host to localhost unless RABBITMQ_URL env var is set
+    conn = Bunny.new(@rabbitmq_server) # Will default host to localhost unless RABBITMQ_URL env var is set
     conn.start
     ch = conn.create_channel
     x = ch.fanout(params[:pub_exchange][0])
@@ -25,7 +33,7 @@ class DashboardController < ApplicationController
   end
 
   def create_sub_to_queue
-    conn = Bunny.new('amqp://' + ENV['RABBITMQ_URL']) # Will default host to localhost unless RABBITMQ_URL env var is set
+    conn = Bunny.new(@rabbitmq_server) # Will default host to localhost unless RABBITMQ_URL env var is set
     conn.start
     queue_to_sub = params[:queue_to_sub][0]
     ch = conn.create_channel

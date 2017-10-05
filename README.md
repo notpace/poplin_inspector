@@ -3,7 +3,7 @@ At its core, the [Poplin Project](http://projectpoplin.org) seeks to promote mod
 
 # Environment Setup
 Ensure that the following environment variables are set when the machine is created:
-- `RABBITMQ_URL`: The full server address of the RabbitMQ messaging server, e.g. `amqp://rabbitmq-amqp-myproject.192.168.64.2.nip.io` (make sure the address begins with `amqp://` rather than `https://`).  When deploying on OpenShift, make sure you have set up the AMQP route properly.  TODO: fix this route ([something to do with TCP/SNI?](https://blog.zhaw.ch/icclab/openshift-custom-router-with-tcpsni-support))
+- `RABBITMQ_URL`: The full server address of the RabbitMQ messaging server, e.g. `amqp://rabbitmq-amqp-myproject.192.168.64.2.nip.io`.  When deploying on OpenShift, make sure you have set up the AMQP route properly.  TODO: fix this route ([something to do with TCP/SNI?](https://blog.zhaw.ch/icclab/openshift-custom-router-with-tcpsni-support))
 - `POPLIN_INSPECTOR_NAME`: A human name given to this instance of the Poplin Inspector to distinguish between different deployments (e.g., Alice, Bob, Charlie)
 - Set `SECRET_KEY_BASE`, `SECRET_KEY`, `SECRET_TOKEN`, and `RAILS_SERVE_STATIC_FILES` to arbitrary values (foo/bar/baz if you like) to set up the environment and actually serve pipeline assets.  TODO: figure out better solutions for these items.
 
