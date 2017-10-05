@@ -6,6 +6,7 @@ Ensure that the following environment variables are set when the machine is crea
 - `RABBITMQ_URL`: The full server address of the RabbitMQ messaging server, e.g. `amqp://rabbitmq-amqp-myproject.192.168.64.2.nip.io`.  When deploying on OpenShift, make sure you have set up the AMQP route properly.  TODO: fix this route ([something to do with TCP/SNI?](https://blog.zhaw.ch/icclab/openshift-custom-router-with-tcpsni-support))
 - `POPLIN_INSPECTOR_NAME`: A human name given to this instance of the Poplin Inspector to distinguish between different deployments (e.g., Alice, Bob, Charlie)
 - Set `SECRET_KEY_BASE`, `SECRET_KEY`, `SECRET_TOKEN`, and `RAILS_SERVE_STATIC_FILES` to arbitrary values (foo/bar/baz if you like) to set up the environment and actually serve pipeline assets.  TODO: figure out better solutions for these items.
+- Set `MONGOHQ_URL` to the route created for the Mongo database (Note: leave off the leading `http://`)
 
 # TODO
 - [RabbitMQ tutorial scripts](https://www.rabbitmq.com/getstarted.html) in a nice front end to show the following message patterns:
