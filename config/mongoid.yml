@@ -142,9 +142,9 @@ production:
       database: poplin_inspector_production
       hosts:
         - <%= ENV['MONGOHQ_URL'] %>
-      username: <%= ENV['MONGODB_USER'] %>
-      password: <%= ENV['MONGODB_PASSWORD'] %>
       options:
+        username: <%= ENV['MONGODB_USER'] %>
+        password: <%= ENV['MONGODB_PASSWORD'] %>
         read:
           mode: :primary
         max_pool_size: 1
