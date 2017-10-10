@@ -142,6 +142,8 @@ production:
       database: poplin_inspector_production
       hosts:
         - <%= ENV['MONGOHQ_URL'] %>
+      username: <%= ENV['MONGODB_USER'] %>
+      password: <%= ENV['MONGODB_PASSWORD'] %>
       options:
         read:
           mode: :primary
