@@ -143,8 +143,8 @@ production:
       hosts:
         - <%= ENV['MONGOHQ_URL'] %>
       options:
-        username: '<%= ENV['MONGODB_USER'] %>'
-        password: '<%= ENV['MONGODB_PASSWORD'] %>'
+        username: "<%= ENV['MONGODB_USER'] %>"
+        password: "<%= ENV['MONGODB_PASSWORD'] %>"
         read:
           mode: :primary
         max_pool_size: 1
