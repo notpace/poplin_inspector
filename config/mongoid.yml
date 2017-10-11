@@ -145,6 +145,5 @@ production:
       options:
         username: "<%= ENV['MONGODB_USER'] %>"
         password: "<%= ENV['MONGODB_PASSWORD'] %>"
-        read:
-          mode: :primary
-        max_pool_size: 1
+        roles:
+          - "readWrite"
