@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
 
   # Ensure that the RABBITMQ_URL variable starts with 'amqp://'
   def set_rabbitmq_env
-    @rabbitmq_server = (ENV['RABBITMQ_URL'][0, 6] == 'amqp://' ? ENV['RABBITMQ_URL'] : 'amqp://' + ENV['RABBITMQ_URL'])
+    @rabbitmq_server = (ENV['RABBITMQ_URL'][0, 7] == 'amqp://' ? ENV['RABBITMQ_URL'] : 'amqp://' + ENV['RABBITMQ_URL'])
   end
 
   def index; end
