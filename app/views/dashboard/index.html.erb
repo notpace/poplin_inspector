@@ -36,7 +36,7 @@
       <!-- This table loads as empty but is populated using the list_messages.html.erb partial -->
       <table class='table' id='subscriptions_table'></table>
 
-      <%= form_tag('dashboard/create_sub_to_queue', remote: true) do %>
+      <%= form_tag('subscriptions/create', remote: true) do %>
         <div class="form-group">
           <label for="queue_to_sub">Subscribe to Queue: </label>
           <!-- <small id="pub_message_tooltip" class="form-text text-muted">Subscribe to a message queue to receive messages.</small> -->

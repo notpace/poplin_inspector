@@ -1,25 +1,25 @@
 // Get the messages from the database and list them on the page
 function get_messages() {
-  $.get({ url: '/dashboard/list_messages', dataType: 'html' })
+  $.get({ url: 'messages', dataType: 'html' })
     .done(function(data) {
       $("#messages_table").replaceWith(data)
     });
 };
 function delete_messages() {
-  $.ajax({ type: "DELETE", url: '/dashboard/delete_messages' })
+  $.ajax({ type: "DELETE", url: '/messages/delete_all' })
     .done(function(data) {
       get_messages();
     });
 };
 // Get queue subscriptions from the database and list them on the page
 function get_subscriptions() {
-  $.get({ url: '/dashboard/list_subscriptions', dataType: 'html' })
+  $.get({ url: 'subscriptions', dataType: 'html' })
     .done(function(data) {
       $("#subscriptions_table").replaceWith(data)
     });
 };
 function delete_subscriptions() {
-  $.ajax({ type: "DELETE", url: '/dashboard/delete_subscriptions' })
+  $.ajax({ type: "DELETE", url: '/subscriptions/delete_all' })
     .done(function(data) {
       get_subscriptions();
     });
