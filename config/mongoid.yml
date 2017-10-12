@@ -145,5 +145,3 @@ production:
       options:
         user: "<%= ENV['MONGODB_USER'] %>"
         password: "<%= ENV['MONGODB_PASSWORD'] %>"
-        roles:
-          - "readWrite"

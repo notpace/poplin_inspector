@@ -15,10 +15,6 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Poplin Additions
 # Mongo for our database
@@ -29,28 +25,12 @@ gem 'bunny', '~> 2.6.4'
 gem 'non-stupid-digest-assets'
 # Add some bootstrap
 gem 'bootstrap', '~> 4.0.0.beta'
-# Randomized information for testing
-gem 'faker'
-# Prettier replacements for javascript alerts
-gem 'sweet-alert-confirm'
-# Apipie for documentation
-gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
-# FactoryGirl for testing
-gem 'factory_girl_rails', '~> 4.0'
-# Roar rails for API field filtering and json-api standards
-gem 'roar', git: 'https://github.com/apotonick/roar.git'
-gem 'roar-rails'
 
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness
   gem 'rubocop'
   # Call 'byebug' anywhere in the code to stop execution and get a debug console
   gem 'byebug'
-  # Capybara and selenium for automated testing
-  gem 'axe-matchers'
-  gem 'capybara'
-  gem 'capybara-accessible'
-  gem 'selenium-webdriver', '2.48.0'
   # Brakeman and bundle-audit for automated testing of security vulnerabilities
   gem 'brakeman', require: false
   gem 'bundler-audit'
