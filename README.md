@@ -3,18 +3,23 @@ At its core, the [Poplin Project](http://projectpoplin.org) seeks to promote mod
 
 # Environment Setup
 Ensure that the following environment variables are set when the machine is created:
-- `RABBITMQ_URL`: The full server address of the RabbitMQ messaging server, e.g. `amqp://rabbitmq-amqp-myproject.192.168.64.2.nip.io`.  When deploying on OpenShift, make sure you have set up the AMQP route properly.  TODO: fix this route ([something to do with TCP/SNI?](https://blog.zhaw.ch/icclab/openshift-custom-router-with-tcpsni-support))
-- `POPLIN_INSPECTOR_NAME`: A human name given to this instance of the Poplin Inspector to distinguish between different deployments (e.g., Alice, Bob, Charlie)
+- `POPLIN_INSPECTOR_NAME`: A human name given to this instance of the Poplin Inspector to distinguish between different deployments (e.g., Alice, Bob, Christine, Daniel, etc.)
+- `RABBITMQ_URL`
+  - Inside the OpenShift cluster, set to the OpenShift service set up for rabbitmq, e.g., `rabbitmq`
+  - Outside the OpenShift cluster, set to the route you created in OpenShift
 - Set `SECRET_KEY_BASE`, `SECRET_KEY`, `SECRET_TOKEN`, and `RAILS_SERVE_STATIC_FILES` to arbitrary values (foo/bar/baz if you like) to set up the environment and actually serve pipeline assets.  TODO: figure out better solutions for these items.
-- Set Mongo environment variables:
-  - `MONGOHQ_URL` to the route created for the Mongo database (Note: leave off the leading `http://`)
-  - `MONGODB_USER` and `MONGODB_PASSWORD` to the username and password for the mongo instance
+- Inside the OpenShift cluster (or for any production instance, really), set Mongo environment variables:
+  - `MONGOHQ_URL` to the OpenShift service set up for mongo, e.g., `mongodb`
+  - `MONGODB_USER` and `MONGODB_PASSWORD` to the username and password for the mongo instance - they should be coming from secret key stores
 
 # TODO
+- ~~Investigate and write a health check script to ensure that the app is running~~
 - [RabbitMQ tutorial scripts](https://www.rabbitmq.com/getstarted.html) in a nice front end to show the following message patterns:
   - ~~Pub/Sub Fanout - done~~
   - Pub/Sub by Routing Key
   - Request/Response
+  - On server startup, open Bunny connections to the RabbitMQ server based on existing subscriptions
+  - When subscriptions are deleted, find and close the Bunny connections
 - Demonstrate a simple communication with the [Synthea FHIR server](https://github.com/synthetichealth)
 - Demonstrate a simple communication with the [Provider Screening Module](https://github.com/OpenTechStrategies/psm)
 - Determine whether we can integrate portions of [Crucible FHIR server Testing](https://github.com/fhir-crucible/) into Poplin
