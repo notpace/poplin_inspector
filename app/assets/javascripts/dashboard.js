@@ -15,7 +15,7 @@ function delete_messages() {
 function get_subscriptions() {
   $.get({ url: 'subscriptions', dataType: 'html' })
     .done(function(data) {
-      $("#subscriptions_table").replaceWith(data)
+      $("#subscriptions").replaceWith(data)
     });
 };
 function delete_subscriptions() {
@@ -25,8 +25,9 @@ function delete_subscriptions() {
     });
 };
 
-// On load, set a few things...
+// On load, do a few things...
 $(document).ready( function(){
+  // Set the refresh functions to run on a 1-second interval
   var refresh_messages = function() {
     get_messages();
     setTimeout(refresh_messages, 1000);
@@ -37,17 +38,27 @@ $(document).ready( function(){
     setTimeout(refresh_subscriptions, 1000);
   }
   setTimeout(refresh_subscriptions, 1000);
+  // Initialize the delete_all buttons
   $("#delete_subscriptions").click( function(){
     delete_subscriptions();
   });
   $("#delete_messages").click( function(){
     delete_messages();
   });
-  // Clear out the queue_to_sub box when create_subscription is clicked
+  // Clear out the pub_message and pub_exchange boxes when publish is clicked
+  $("#publish").click( function(){
+    setTimeout(function(){
+      // extra underscore is not a typo -- rails appends it to the element id for some reason
+      $("#pub_message_").val('')
+      $("#pub_exchange_").val('')
+    }, 500);
+  });
+  // Clear out the queue_to_sub and exchange_to_sub boxes when create_subscription is clicked
   $("#create_subscription").click( function(){
     setTimeout(function(){
       // extra underscore is not a typo -- rails appends it to the element id for some reason
       $("#queue_to_sub_").val('')
+      $("#exchange_to_sub_").val('')
     }, 500);
   });
 });

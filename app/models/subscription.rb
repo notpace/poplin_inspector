@@ -8,5 +8,6 @@ class Subscription
 
   scope :user, ->(user) { where user_id: user }
 
-  field :queue, type: String, default: ''
+  field :exchange, type: String, default: ''
+  field :queue,    type: String, default: ''
 end

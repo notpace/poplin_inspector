@@ -16,5 +16,7 @@
   </tbody>
 </table>
 <% else %>
-<div class='alert alert-warning' id='messages_table'>No messages in the database.</div>
+<div class='alert alert-warning' id='messages_table'>
+  <%= ENV['POPLIN_INSPECTOR_NAME']%> has not received any messages.
+</div>
 <% end %>

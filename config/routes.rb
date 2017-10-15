@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   get 'messages', to: 'messages#index'
   delete '/messages/delete_all', to: 'messages#delete_all'
 
-  get 'subscriptions', to: 'subscriptions#index'
-  post 'subscriptions/create', to: 'subscriptions#create'
   delete 'subscriptions/delete_all', to: 'subscriptions#delete_all'
-  # delete 'subscriptions/:id', to: 'subscriptions#delete'
+  resources :subscriptions
 
   root 'dashboard#index'
 

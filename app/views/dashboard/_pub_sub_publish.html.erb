@@ -1,0 +1,18 @@
+<%= form_tag('dashboard/publish', remote: true) do %>
+  <div class="form-group row">
+    <div class="form-group col-12 col-md-6">
+      <label for="pub_message">Message Text:</label>
+      <!-- <small id="pub_message_tooltip" class="form-text text-muted">Send a quick message to all subscribers.</small> -->
+      <%= text_field 'pub_message', nil, class: "form-control", placeholder: 'Publish something...' %>
+    </div>
+    <div class="form-group col-12 col-md-6">
+      <label for="pub_exchange">Exchange:</label>
+      <!-- <small id="pub_exchange_tooltip" class="form-text text-muted">This exchange is parsed by RabbitMQ and used to route the message to the approproate parties.  In this fanout exchange, all parties connected to the queue bound to this exchange will receive the message, regardless of the routing key.</small> -->
+      <%= text_field 'pub_exchange', nil, class: "form-control", placeholder: '...to a particular exchange' %>
+    </div>
+  </div>
+  <p class='clearfix'>
+    <button id='publish' type='submit' class="btn btn-primary float-right">Publish</button>
+  </p>
+<% end %>
+<!-- TODO: display success/failure messages after sending -->

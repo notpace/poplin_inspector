@@ -10,15 +10,13 @@ class DashboardController < ApplicationController
     conn = Bunny.new(@rabbitmq_server) # Will default host to localhost unless RABBITMQ_URL env var is set
     conn.start
     ch = conn.create_channel
-    x = ch.fanout(params[:pub_exchange][0])
-    ch.queue(params[:pub_queue][0]).bind(x).subscribe
+    x = ch.fanout(params[:pub_exchange][0], durable: true)
     x.publish(params[:pub_message][0])
     sleep 0.5
-    x.delete
     conn.close
-    respond_to do |format|
-      format.json { head :ok }
-      format.html
-    end
+    # respond_to do |format|
+    #   format.json { head :ok }
+    #   format.html
+    # end
   end
 end

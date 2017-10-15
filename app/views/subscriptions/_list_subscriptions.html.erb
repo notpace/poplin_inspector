@@ -1,19 +1,25 @@
 <% if @subscriptions.count > 0 %>
-<table class='table' id='subscriptions_table'>
-  <thead>
-    <tr>
-      <th>Subscription
-      <!-- <th>Action -->
-  </thead>
-  <tbody>
-  <% @subscriptions.each do |subscription| %>
-    <tr>
-      <td><%= subscription.queue %>
-      <!-- TODO: figure out the proper routing for this link -->
-      <!-- <td><%= link_to 'Unsubscribe', { remote: true, method: :delete_subscriptions }, class: 'btn btn-danger' %> -->
-  <% end %>
-  </tbody>
-</table>
+<div id='subscriptions'>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Exchange
+        <th>Queue
+        <th>Action
+        <!-- <th>Action -->
+    </thead>
+    <tbody>
+    <% @subscriptions.each do |subscription| %>
+      <tr>
+        <td><%= subscription.exchange %>
+        <td><%= subscription.queue %>
+        <td><%= link_to 'Unsubscribe', subscription, remote: true, method: :delete, class: 'btn btn-danger' %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 <% else %>
-<div class='alert alert-warning' id='subscriptions_table'><strong><%= ENV["POPLIN_INSPECTOR_NAME"] %></strong> is not subscribed to any queues.</div>
+<div id='subscriptions' class='alert alert-warning'>
+  <strong><%= ENV["POPLIN_INSPECTOR_NAME"] %></strong> is not subscribed to any queues.
+</div>
 <% end %>
